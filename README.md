@@ -25,4 +25,8 @@ use `./configure.sh` to call cmake, then `make` like in any other project
 Debug/Release mode ?
 --------------------
 
-simply call `./configure -DCMAKE_BUILD_TYPE=DEBUG`
+simply call `./configure.sh -DCMAKE_BUILD_TYPE=DEBUG`
+
+or
+
+`./configure.sh -DCMAKE_BUILD_TYPE=RELEASE`
