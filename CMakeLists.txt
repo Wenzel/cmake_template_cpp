@@ -1,12 +1,16 @@
 cmake_minimum_required(VERSION 2.6)
-
+# set cmake module path, to search in cmake/Modules first
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules" "${CMAKE_MODULE_PATH}")
+#-----------------------------------------------------------------------------
+#                               MODULES
+#-----------------------------------------------------------------------------
+include(static_analysis)
+include(doxygen)
 #-----------------------------------------------------------------------------
 #                           GENERAL CONFIGURATION
 #-----------------------------------------------------------------------------
 project(ProjectName CXX)
 
-# set cmake module path, to search in cmake/Modules first
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules")
 #-----------------------------------------------------------------------------
 #                              DEPENDENCIES
 #-----------------------------------------------------------------------------
@@ -31,8 +35,3 @@ endif(CMAKE_BUILD_TYPE MATCHES "RELEASE")
 #                               SOURCES
 #-----------------------------------------------------------------------------
 add_subdirectory(src)
-
-#-----------------------------------------------------------------------------
-#                               DOCUMENTATION
-#-----------------------------------------------------------------------------
-include(cmake/doxygen.cmake)
