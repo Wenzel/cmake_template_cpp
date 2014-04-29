@@ -22,7 +22,7 @@ Usage
 
 use `./configure.sh` to call cmake, then `make` like in any other project
 
-Debug/Release mode ?
+Debug / Release Mode ?
 --------------------
 
 simply call `./configure.sh -DCMAKE_BUILD_TYPE=DEBUG`
