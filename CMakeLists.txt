@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.6)
+
 # set cmake module path, to search in cmake/Modules first
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules" "${CMAKE_MODULE_PATH}")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
+
 #-----------------------------------------------------------------------------
 #                               MODULES
 #-----------------------------------------------------------------------------
