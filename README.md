@@ -20,7 +20,7 @@ Edit `CMakeLists.txt` to setup your project dependencies (Qt, Boost, ...)
 Usage
 =====
 
-use `./configure.sh` to configure your project, then run `make`
+use `./configure.sh` to setup a default configuration for your project, then run `make`
 
 run `./configure.sh -c` to setup the compiler (`g++` | `clang++`)
 
