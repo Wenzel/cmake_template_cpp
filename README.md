@@ -28,13 +28,13 @@ run `./configure.sh -p` to setup the install prefix
 
 run `./configure.sh -b` to setup the build type (`Debug` | `Release`)
 
-Targets Available
+Default Targets Available
 =====
 
 doc
 -----
 
-if you have installed `doxygen`, you can use the `make doc` target to generate the
+if you have installed `doxygen`, you can use `make doc` to generate the
 source code documentation (call graphs, UML, etc).
 
 The open `_build/doc/html/index.html` with your favorite browser
@@ -42,5 +42,5 @@ The open `_build/doc/html/index.html` with your favorite browser
 static\_analysis
 ---------------
 
-if you have installed `clang`, you can use the `make static_analysis` target to
+if you have installed `clang`, you can use `make static_analysis` to
 scan your source code for programming errors with ccc-analyzer.
