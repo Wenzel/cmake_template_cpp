@@ -20,13 +20,10 @@ Edit `CMakeLists.txt` to setup your project dependencies (Qt, Boost, ...)
 Usage
 =====
 
-use `./configure.sh` to call cmake, then `make` like in any other project
+use `./configure.sh` to configure your project, then run `make`
 
-Debug / Release Mode ?
---------------------
+run `./configure.sh -c` to setup the compiler (`g++` | `clang++`)
 
-simply call `./configure.sh -DCMAKE_BUILD_TYPE=DEBUG`
+run `./configure.sh -p` to setup the install prefix 
 
-or
-
-`./configure.sh -DCMAKE_BUILD_TYPE=RELEASE`
+run `./configure.sh -b` to setup the build type (`Release` | `Debug`)
