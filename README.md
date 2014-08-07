@@ -2,7 +2,7 @@ CMake C++ Project Template
 ==============
 
 A simple C++ project template based on CMake to help you to stay focused
-on the code!
+on the code !
 
 Setup
 =====
@@ -13,7 +13,7 @@ clone the repo
 
 add your sources in `src/`
 
-Edit `src/CMakeLists.txt` to create your executable/lib
+Edit `src/CMakeLists.txt` to create your executable / library
 
 Edit `CMakeLists.txt` to setup your project dependencies (Qt, Boost, ...)
 
