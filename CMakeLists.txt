@@ -26,9 +26,9 @@ message(STATUS "build = ${CMAKE_BUILD_TYPE}")
 #-----------------------------------------------------------------------------
 #                           BUILD TYPES & FLAGS
 #-----------------------------------------------------------------------------
-list(APPEND CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -std=c++0x")
-list(APPEND CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g3 -ggdb3 -O0")
-list(APPEND CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Werror -O2")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -std=c++0x")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g3 -ggdb3 -O0")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Werror -O2")
 
 # strip binary in release mode
 if(CMAKE_BUILD_TYPE MATCHES "RELEASE")
