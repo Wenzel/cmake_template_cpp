@@ -26,4 +26,4 @@ run `./configure.sh -c` to setup the compiler (`g++` | `clang++`)
 
 run `./configure.sh -p` to setup the install prefix 
 
-run `./configure.sh -b` to setup the build type (`Release` | `Debug`)
+run `./configure.sh -b` to setup the build type (`Debug` | `Release`)
