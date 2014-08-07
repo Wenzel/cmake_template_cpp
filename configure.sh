@@ -14,7 +14,7 @@ build_types=(Debug Release)
 compiler_answer=1 
 prefix_answer="/usr/local"
 build_type_answer=1
-while getopts ":cp" opt ; do
+while getopts ":cpb" opt ; do
     case $opt in
         "c")
             dialog --backtitle "Compiler configuration" \
@@ -43,7 +43,7 @@ while getopts ":cp" opt ; do
             ;;
         "b")
             dialog --backtitle "Build type configuration" \
-                --inputbox "Set the build type" 0 0 10 \
+                --radiolist "Set the build type" 0 0 10 \
                 1 "${build_types[0]}" on \
                 2 "${build_types[1]}" off \
                 2>/tmp/$$_dialog.ans
@@ -53,7 +53,6 @@ while getopts ":cp" opt ; do
                 echo "Project Configuration Cancelled."
                 exit 1
             fi
-
             ;;
     esac
 done

@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 2.6)
 
 # set cmake module path, to search in cmake/Modules first
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
-
 #-----------------------------------------------------------------------------
 #                               MODULES
 #-----------------------------------------------------------------------------
@@ -12,7 +11,9 @@ include(doxygen)
 #                           GENERAL CONFIGURATION
 #-----------------------------------------------------------------------------
 project(ProjectName CXX)
-
+message(STATUS "compiler = ${CMAKE_CXX_COMPILER}")
+message(STATUS "prefix = ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "build = ${CMAKE_BUILD_TYPE}")
 #-----------------------------------------------------------------------------
 #                              DEPENDENCIES
 #-----------------------------------------------------------------------------
