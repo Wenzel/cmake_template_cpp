@@ -27,3 +27,20 @@ run `./configure.sh -c` to setup the compiler (`g++` | `clang++`)
 run `./configure.sh -p` to setup the install prefix 
 
 run `./configure.sh -b` to setup the build type (`Debug` | `Release`)
+
+Targets Available
+=====
+
+doc
+-----
+
+if you have installed `doxygen`, you can use the `make doc` target to generate the
+source code documentation (call graphs, UML, etc).
+
+The open `_build/doc/html/index.html` with your favorite browser
+
+static\_analysis
+---------------
+
+if you have installed `clang`, you can use the `make static_analysis` target to
+scan your source code for programming errors with ccc-analyzer.
