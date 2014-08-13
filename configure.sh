@@ -27,6 +27,11 @@ while getopts ":cpb" opt ; do
             if [ "$compiler_answer" -eq 0 ]; then
                 echo "Project Configuration Cancelled."
                 exit 1
+            else
+                # better to remove the build dir and recreate it
+                # when changing the compiler
+                rm -rf "$cur_dir/_build"
+                mkdir -p "$cur_dir/_build"
             fi
             ;;
         "p")
