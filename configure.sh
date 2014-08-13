@@ -24,7 +24,7 @@ while getopts ":cpb" opt ; do
                 2>/tmp/$$_dialog.ans
 
             compiler_answer=$(cat /tmp/$$_dialog.ans && rm -f /tmp/$$_dialog.ans)
-            if [ "$compiler_answer" = "" ] || [ "$compiler_answer" -eq 0 ]; then
+            if [ "$compiler_answer" -eq 0 ]; then
                 echo "Project Configuration Cancelled."
                 exit 1
             fi
@@ -36,7 +36,7 @@ while getopts ":cpb" opt ; do
                 2>/tmp/$$_dialog.ans
 
             prefix_answer=$(cat /tmp/$$_dialog.ans && rm -f /tmp/$$_dialog.ans)
-            if [ "$prefix_answer" = "" ] || [ "$prefix_answer" -eq 0 ]; then
+            if [ "$prefix_answer" -eq 0 ]; then
                 echo "Project Configuration Cancelled."
                 exit 1
             fi
@@ -49,7 +49,7 @@ while getopts ":cpb" opt ; do
                 2>/tmp/$$_dialog.ans
 
             build_type_answer=$(cat /tmp/$$_dialog.ans && rm -f /tmp/$$_dialog.ans)
-            if [ "$build_type_answer" = "" ] || [ "$build_type_answer" -eq 0 ]; then
+            if [ "$build_type_answer" -eq 0 ]; then
                 echo "Project Configuration Cancelled."
                 exit 1
             fi
