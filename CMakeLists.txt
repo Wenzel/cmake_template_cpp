@@ -11,9 +11,9 @@ include(doxygen)
 #                           GENERAL CONFIGURATION
 #-----------------------------------------------------------------------------
 project(ProjectName CXX)
-message(STATUS "compiler = ${CMAKE_CXX_COMPILER}")
-message(STATUS "prefix = ${CMAKE_INSTALL_PREFIX}")
-message(STATUS "build = ${CMAKE_BUILD_TYPE}")
+message(STATUS " ↳ Compiler → ${CMAKE_CXX_COMPILER}")
+message(STATUS " ↳ Prefix   → ${CMAKE_INSTALL_PREFIX}")
+message(STATUS " ↳ Build    → ${CMAKE_BUILD_TYPE}")
 #-----------------------------------------------------------------------------
 #                              DEPENDENCIES
 #-----------------------------------------------------------------------------
