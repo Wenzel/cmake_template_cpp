@@ -37,7 +37,7 @@ doc
 if you have installed `doxygen`, you can use `make doc` to generate the
 source code documentation (call graphs, UML, etc).
 
-The open `_build/doc/html/index.html` with your favorite browser
+Then open `_build/doc/html/index.html` with your favorite browser
 
 static\_analysis
 ---------------
