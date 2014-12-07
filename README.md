@@ -22,11 +22,11 @@ Usage
 
 use `./configure.sh` to setup a default configuration for your project, then run `make`
 
-run `./configure.sh -c` to setup the compiler (`g++` | `clang++`)
+run `./configure.sh -c` to change the compiler (`g++` | `clang++`)
 
-run `./configure.sh -p` to setup the install prefix 
+run `./configure.sh -p` to change the install prefix 
 
-run `./configure.sh -b` to setup the build type (`Debug` | `Release`)
+run `./configure.sh -b` to change the build type (`Debug` | `Release`)
 
 Default Targets Available
 =====
@@ -43,4 +43,4 @@ static\_analysis
 ---------------
 
 if you have installed `clang`, you can use `make static_analysis` to
-scan your source code for programming errors with ccc-analyzer.
+scan your source code for programming errors with `ccc-analyzer`.
