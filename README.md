@@ -4,6 +4,13 @@ CMake C++ Project Template
 A simple C++ project template based on CMake to help you to stay focused
 on the code !
 
+Requirements
+------------
+
+- `ccache` is now included by default !
+- `doxygen` and `dot` will be needed if you want to generate the documentation
+- `ccc-analyzer` is required to run a static analysis of your source code
+
 Setup
 -----
 
