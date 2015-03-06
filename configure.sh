@@ -17,12 +17,13 @@ __file="$(basename $__file_path)"
 #------------------------------------------------------------------------------
 usage ()
 {
-    echo "./$__file [-h] [-c] [-p] [-b]"
+    echo "./$__file [-h] [-c] [-p] [-b] [-s]"
     echo
     echo "  -h      Display help"
     echo "  -c      Change compiler (g++)"
     echo "  -p      Change install prefix (/usr/local)"
     echo "  -b      Change build type (DEBUG)"
+    echo "  -s      Enable compiler sanitizers flag ()"
     exit 1
 }
 #------------------------------------------------------------------------------
@@ -36,13 +37,15 @@ mkdir -p "$__dir/_build"
 OPTIND=1
 compilers=(g++ clang++)
 build_types=(Debug Release)
+sanitizers=(none address thread memory undefined)
 
 # default values
 compiler_answer=1 
 prefix_answer="/usr/local"
 build_type_answer=1
+sanitizer_answer=1
 # getopt loop
-while getopts ":hcpb" opt ; do
+while getopts ":cpbsh" opt ; do
     case $opt in
         "c")
             dialog --backtitle "Compiler configuration" \
@@ -87,6 +90,22 @@ while getopts ":hcpb" opt ; do
                 exit 1
             fi
             ;;
+        "s")
+            dialog --backtitle "Compiler sanitizers configuration" \
+                --radiolist "Choose the sanitizer you want to use:" 0 0 10 \
+                1 "${sanitizers[0]}" on \
+                2 "${sanitizers[1]}" off \
+                3 "${sanitizers[2]}" off \
+                4 "${sanitizers[3]}" off \
+                5 "${sanitizers[4]}" off \
+                2>/tmp/$$_dialog.ans
+
+            sanitizer_answer=$(cat /tmp/$$_dialog.ans && rm -f /tmp/$$_dialog.ans)
+            if [ "$sanitizer_answer" -eq 0 ]; then
+                echo "Project Configuration Cancelled."
+                exit 1
+            fi
+            ;;
         "h")
             usage
             ;;
@@ -99,4 +118,5 @@ cd "$__dir/_build" && \
     cmake .. \
     -DCMAKE_CXX_COMPILER="/usr/bin/${compilers[$(($compiler_answer - 1 ))]}" \
     -DCMAKE_BUILD_TYPE="`echo ${build_types[$(( $build_type_answer - 1 ))]} | tr '[a-z]' '[A-Z]'`" \
-    -DCMAKE_INSTALL_PREFIX="$prefix_answer"
+    -DCMAKE_INSTALL_PREFIX="$prefix_answer" \
+    -DCOMPILER_SANITIZER="${sanitizers[$(( $sanitizer_answer - 1 ))]}"
