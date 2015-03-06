@@ -61,8 +61,3 @@ Then open `_build/doc/html/index.html` with your favorite browser
 
 if you have installed `clang`, you can use `make static_analysis` to
 scan your source code for programming errors with `ccc-analyzer` (if installed !).
-
-Other features
---------------
-
-- `ccache` integration by default (`include ccache`)
