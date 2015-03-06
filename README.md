@@ -11,7 +11,7 @@ Features
 or **install prefix** with a dialog based interface.
 - `ccache` enabled by default for every target in the project
 - generate the documentation and understand the relationship between the classes of your projects,
-thanks to `doxygen` call graph generation, and UML representation
+thanks to `doxygen` call graph generation and UML representation
 - improve the quality of your source code with `ccc-analyzer` static analysis
 
 
