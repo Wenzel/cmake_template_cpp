@@ -1,20 +1,48 @@
-#!/bin/sh
+#!/bin/bash
 
-# absolute path to current dir
-cur_dir=`dirname \`readlink -f $0\``
+
+#------------------------------------------------------------------------------
+#                               QUALITY
+#------------------------------------------------------------------------------
+set -o errexit
+set -o pipefail
+# set -o xtrace
+
+__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+__file_path="${__dir}/$(basename "${BASH_SOURCE[0]}")"
+__file="$(basename $__file_path)"
+
+#------------------------------------------------------------------------------
+#                               USAGE
+#------------------------------------------------------------------------------
+usage ()
+{
+    echo "./$__file [-h] [-c] [-p] [-b]"
+    echo
+    echo "  -h      Display help"
+    echo "  -c      Change compiler (g++)"
+    echo "  -p      Change install prefix (/usr/local)"
+    echo "  -b      Change build type (DEBUG)"
+    exit 1
+}
+#------------------------------------------------------------------------------
+#                               SCRIPT LOGIC
+#------------------------------------------------------------------------------
 
 # create build dir
-mkdir -p "$cur_dir/_build"
+mkdir -p "$__dir/_build"
 
 # parsing option
 OPTIND=1
 compilers=(g++ clang++)
 build_types=(Debug Release)
+
 # default values
 compiler_answer=1 
 prefix_answer="/usr/local"
 build_type_answer=1
-while getopts ":cpb" opt ; do
+# getopt loop
+while getopts ":hcpb" opt ; do
     case $opt in
         "c")
             dialog --backtitle "Compiler configuration" \
@@ -30,8 +58,8 @@ while getopts ":cpb" opt ; do
             else
                 # better to remove the build dir and recreate it
                 # when changing the compiler
-                rm -rf "$cur_dir/_build"
-                mkdir -p "$cur_dir/_build"
+                rm -rf "$__dir/_build"
+                mkdir -p "$__dir/_build"
             fi
             ;;
         "p")
@@ -59,12 +87,15 @@ while getopts ":cpb" opt ; do
                 exit 1
             fi
             ;;
+        "h")
+            usage
+            ;;
     esac
 done
 
 # CMAKE
 #################
-cd "$cur_dir/_build" && \
+cd "$__dir/_build" && \
     cmake .. \
     -DCMAKE_CXX_COMPILER="/usr/bin/${compilers[$(($compiler_answer - 1 ))]}" \
     -DCMAKE_BUILD_TYPE="`echo ${build_types[$(( $build_type_answer - 1 ))]} | tr '[a-z]' '[A-Z]'`" \

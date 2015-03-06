@@ -33,8 +33,9 @@ Default Targets Available
 
 ### doc
 
-if you have installed `doxygen`, you can use `make doc` to generate the
-source code documentation (call graphs, UML, etc).
+If you have `doxygen` installed, you can use `make doc` to generate the
+source code documentation, like caller and callee graphs or UML diagrams.
+(you can install `dot` to generate nicer graphs)
 
 Then open `_build/doc/html/index.html` with your favorite browser
 
