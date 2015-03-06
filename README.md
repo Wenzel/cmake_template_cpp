@@ -4,6 +4,17 @@ CMake C++ Project Template
 A simple C++ project template based on CMake to help you to stay focused
 on the code !
 
+Features
+--------
+
+- easy change your project settings, like switch **compiler**, **build type**,
+or **install prefix** with a dialog based interface.
+- `ccache` enabled by default for every target in the project
+- generate the documentation and understand the relationship between classes of your projects,
+thanks to `doxygen` call graph generation
+- improve the quality of your source code with `ccc-analyzer` static analysis
+
+
 Requirements
 ------------
 
