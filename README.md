@@ -13,7 +13,7 @@ or **install prefix** with a dialog based interface.
 - generate the documentation and understand the relationship between the classes of your projects,
 thanks to `doxygen` call graph generation and UML representation
 - improve the quality of your source code with `ccc-analyzer` static analysis
-- compiler sanitizer integration with `address`, `thread`, `memory` and `undefined` !
+- compiler sanitizer integration with `-fsanitize=` `address`, `thread`, `memory` or `undefined` !
 
 
 Requirements
@@ -48,6 +48,7 @@ run `./configure.sh -p` to change the install prefix (`/usr/local`)
 run `./configure.sh -b` to change the build type (`Debug` | `Release`)
 
 run `./configure.sh -s` to change the sanitizer (none `address` | `thread` | `memory` | `undefined`)
+Your compiler must be up to date to use this feature !
 
 Default Targets Available
 -------------------------
