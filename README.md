@@ -13,7 +13,7 @@ or **install prefix** with a dialog based interface.
 - generate the documentation and understand the relationship between the classes of your projects,
 thanks to `doxygen` call graph generation and UML representation
 - improve the quality of your source code with `ccc-analyzer` static analysis
-- compiler sanitizer integration with `-fsanitize=` `address`, `thread`, `memory` or `undefined` !
+- compiler sanitizer integration with `-fsanitize=` `address`, `thread`, `memory`, `leak` or `undefined` !
 
 
 Requirements
