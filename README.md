@@ -47,7 +47,7 @@ run `./configure.sh -p` to change the install prefix (`/usr/local`)
 
 run `./configure.sh -b` to change the build type (`Debug` | `Release`)
 
-run `./configure.sh -s` to change the sanitizer (none `address` | `thread` | `memory` | `undefined`)
+run `./configure.sh -s` to change the sanitizer (`address` | `thread` | `memory` | `leak` | `undefined`)
 Your compiler must be up to date to use this feature !
 
 Default Targets Available
