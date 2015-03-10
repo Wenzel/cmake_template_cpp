@@ -37,7 +37,7 @@ mkdir -p "$__dir/_build"
 OPTIND=1
 compilers=(g++ clang++)
 build_types=(Debug Release)
-sanitizers=(none address thread memory undefined)
+sanitizers=(address thread memory leak undefined)
 
 # default values
 compiler_answer=1 
@@ -92,7 +92,7 @@ while getopts ":cpbsh" opt ; do
             ;;
         "s")
             dialog --backtitle "Compiler sanitizers configuration" \
-                --radiolist "Choose the sanitizer you want to use:" 0 0 10 \
+                --checklist "Choose the sanitizer you want to use:" 0 0 10 \
                 1 "${sanitizers[0]}" on \
                 2 "${sanitizers[1]}" off \
                 3 "${sanitizers[2]}" off \
@@ -101,9 +101,18 @@ while getopts ":cpbsh" opt ; do
                 2>/tmp/$$_dialog.ans
 
             sanitizer_answer=$(cat /tmp/$$_dialog.ans && rm -f /tmp/$$_dialog.ans)
-            if [ "$sanitizer_answer" -eq 0 ]; then
+            selected_sanitizers=()
+            if [ "$sanitizer_answer" = "" ]; then
                 echo "Project Configuration Cancelled."
                 exit 1
+            else
+                for i in $sanitizer_answer; do
+                    idx=$(( $i - 1 ))
+                    # push to array
+                    selected_sanitizers+="${sanitizers[$idx]} "
+                done
+                # make CMake list struct
+                selected_sanitizers=$( echo "${selected_sanitizers[@]% }" | sed -e 's/ /;/g')
             fi
             ;;
         "h")
@@ -119,4 +128,4 @@ cd "$__dir/_build" && \
     -DCMAKE_CXX_COMPILER="/usr/bin/${compilers[$(($compiler_answer - 1 ))]}" \
     -DCMAKE_BUILD_TYPE="`echo ${build_types[$(( $build_type_answer - 1 ))]} | tr '[a-z]' '[A-Z]'`" \
     -DCMAKE_INSTALL_PREFIX="$prefix_answer" \
-    -DCOMPILER_SANITIZER="${sanitizers[$(( $sanitizer_answer - 1 ))]}"
+    -DCOMPILER_SANITIZER="$selected_sanitizers"

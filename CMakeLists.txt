@@ -12,10 +12,6 @@ include(ccache)
 #                           GENERAL CONFIGURATION
 #-----------------------------------------------------------------------------
 project(ProjectName CXX)
-message(STATUS " ↳ Compiler     → ${CMAKE_CXX_COMPILER}")
-message(STATUS " ↳ Prefix       → ${CMAKE_INSTALL_PREFIX}")
-message(STATUS " ↳ Build        → ${CMAKE_BUILD_TYPE}")
-message(STATUS " ↳ Sanitizer    → ${COMPILER_SANITIZER}")
 #-----------------------------------------------------------------------------
 #                              DEPENDENCIES
 #-----------------------------------------------------------------------------
@@ -28,13 +24,10 @@ message(STATUS " ↳ Sanitizer    → ${COMPILER_SANITIZER}")
 #-----------------------------------------------------------------------------
 #                           BUILD TYPES & FLAGS
 #-----------------------------------------------------------------------------
+include(sanitizers)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -std=c++0x")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g3 -ggdb3 -O0")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g3 -O0")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Werror -O2")
-# sanitizer
-if(NOT COMPILER_SANITIZER MATCHES "none")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=${COMPILER_SANITIZER}")
-endif()
 
 # strip binary in release mode
 if(CMAKE_BUILD_TYPE MATCHES "RELEASE")
@@ -44,3 +37,12 @@ endif()
 #                               SOURCES
 #-----------------------------------------------------------------------------
 add_subdirectory(src)
+
+#-----------------------------------------------------------------------------
+#                               BUILD SUMMARY
+#-----------------------------------------------------------------------------
+message(STATUS " ↳ Compiler     → ${CMAKE_CXX_COMPILER}")
+message(STATUS " ↳ Prefix       → ${CMAKE_INSTALL_PREFIX}")
+message(STATUS " ↳ Build        → ${CMAKE_BUILD_TYPE}")
+message(STATUS " ↳ Sanitizers   → ${COMPILER_SANITIZER}")
+message(STATUS " ↳ CXX Flags    → ${CMAKE_CXX_FLAGS}")
