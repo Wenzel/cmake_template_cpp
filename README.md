@@ -65,3 +65,7 @@ Then open `_build/doc/html/index.html` with your favorite browser
 
 if you have installed `clang`, you can use `make static_analysis` to
 scan your source code for programming errors with `ccc-analyzer` (if installed !).
+
+### uninstall\_files
+
+you can remove the files previously installed with `make install` with this target.
