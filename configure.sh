@@ -68,7 +68,7 @@ while getopts ":cpbsh" opt ; do
         "p")
             dialog --backtitle "Installation prefix configuration" \
                 --inputbox "Set the install prefix" 0 0 \
-                "/usr/local"
+                "/usr/local" \
                 2>/tmp/$$_dialog.ans
 
             prefix_answer=$(cat /tmp/$$_dialog.ans && rm -f /tmp/$$_dialog.ans)
